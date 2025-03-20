@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedro Pascal Page</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">Pedro Pascal.</a>
+      <ul class="navmenu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#gallery">Galeria</a></li>
+        <li><a href="#bio">Projetos</a></li>
+        <li><a href="https://www.instagram.com/pascalispunk/">Contato</a></li>
+      </ul>
+    </header>
+
+    <section class="home">
+      <div class="home-text">
+        <h2>Pedro Pascal <i class="ph-bold ph-hand-waving"></i></h2>
+        <h3>Ator e produtor</h3>
+        <p>José Pedro Balmaceda Pascal (Santiago, 2 de abril de 1975) é um ator chileno naturalizado americano. Eleito pela Time uma das 100 pessoas mais influentes do mundo em 2023. </p>
+        <div class="home-btn">
+          <a href="#" class="btn">Filmografia</a>
+          <a href="#" class="btn">Séries <i class="ph ph-read-cv-logo"></i></a>
+        </div>
+      </div>
+      <div class="home-img">
+        <img src="img/zepedro.png" />
+      </div>
+    </section>
+
+    <div class="socials-icons">
+      <a href="https://www.instagram.com/pascalispunk/"><i class="ph-bold ph-instagram-logo"></i></a>
+      <a href="https://x.com/pascalarchive"><i class="ph-bold ph-twitter-logo"></i></a>
+
+    </div>
+    <a href="#about" class="scroll-btn">Scroll down
+      <i class="ph-bold ph-arrow-bend-right-down"></i>
+    </a>
+
+    
+    <section id="about">
+      <div id="about-content">
+        <!-- Conteúdo será preenchido dinamicamente pelo JavaScript -->
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+      
+      <div class="gallery-images">
+        <img src="img/zp1.png" alt="Pedro Pascal 1" />
+        <img src="img/zp2.png" alt="Pedro Pascal 2" />
+        <img src="img/zp3.png" alt="Pedro Pascal 3" />
+      </div>
+    </section>
+
+     
+    <section id="bio" class="bio">
+      <img src="img/zp5.png" alt="The Last of Us" />
+      <div class="bio-text">
+        <h2>The Last of Us</h2>
+        <p>
+          Pedro Pascal interpreta Joel Miller na aclamada série <strong>The Last of Us</strong>, produzida pela HBO. Baseada no famoso videogame de mesmo nome, a série se passa em um mundo pós-apocalíptico devastado por uma infecção fúngica que transforma humanos em criaturas agressivas.
+        </p>
+        <br></br>
+        <p>
+          Joel é um sobrevivente endurecido pelo caos, que é encarregado de escoltar Ellie (interpretada por Bella Ramsey), uma jovem que pode ser a chave para a cura da humanidade. A jornada dos dois é repleta de perigos, dilemas morais e momentos emocionantes, explorando temas como amor, perda e esperança.
+        </p>
+      </div>
+    </section>
+
+    <section class="bio">
+      <div class="bio-text">
+        <h2>Narcos</h2>
+        <p>
+          Pedro Pascal interpreta Javier Peña na aclamada série <strong>Narcos</strong>, produzida pela Netflix. Baseada em eventos reais, a série acompanha a luta dos agentes da DEA contra os cartéis de drogas na Colômbia, com foco na queda de Pablo Escobar, interpretado por Wagner Moura.
+        </p>
+        <br></br>
+        <p>
+          Javier Peña é um agente determinado e astuto, que trabalha ao lado de Steve Murphy (interpretado por Boyd Holbrook) para desmantelar o império de Escobar. A atuação de Pascal traz profundidade ao personagem, mostrando um homem comprometido com a justiça, mas também disposto a enfrentar dilemas éticos em sua missão. A série é repleta de tensão, ação e intrigas políticas, explorando os bastidores da guerra contra as drogas.
+        </p>
+      </div>
+      <img src="img/zp6.png" alt="The Last of Us" />
+    </section>
+
+    <script>
+
+      async function loadPedroPascalData() {
+        try {
+          const response = await fetch('data.json');
+          if (!response.ok) {
+            throw new Error('Erro ao carregar o JSON');
+          }
+          const data = await response.json();
+
+          // Criando o conteúdo dinâmico
+          const content = `
+      
+      <h3></h3> ${data.miniBio.map(paragraph => `<p>${paragraph}</p>`).join('')}
+    `;
+
+          //seção about
+          document.getElementById('about-content').innerHTML = content;
+        } catch (error) {
+          console.error('Erro:', error);
+          document.getElementById('about-content').innerHTML = `<p class="error">Erro ao carregar os dados.</p>`;
+        }
+      }
+
+      // Adicionando a classe "about" ao elemento p edit css
+      const aboutSection = document.getElementById('about');
+      aboutSection.classList.add('about');
+
+      // Carregando os dados quando a página é aberta
+      loadPedroPascalData();
+
+      // Adicionando evento de clique ao botão "Scroll down"
+      document.querySelector('.scroll-btn').addEventListener('click', function (e) {
+        e.preventDefault(); // Evita o comportamento padrão do link
+        document.getElementById('about').scrollIntoView({ behavior: 'smooth' }); // Rola suavemente até a seção about
+      });
+    </script>
+
+
+<footer>
+  <div class="footer-content">
+    <p>&copy; 2023 Pedro Pascal Page. Todos os direitos reservados.</p>
+    
+  </div>
+</footer>
+  </body>
+</html>
