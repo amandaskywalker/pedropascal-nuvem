@@ -2,7 +2,7 @@
 async function loadPedroPascalData() {
   try {
       // Busca o arquivo JSON
-      const response = await fetch('/data.json');
+      const response = await fetch('http://backend:25000/data');
       if (!response.ok) {
           throw new Error('Erro ao carregar o JSON');
       }
